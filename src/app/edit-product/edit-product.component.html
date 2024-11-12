@@ -1,0 +1,63 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <h2 class="text-center mb-4">EDIT PRODUCT</h2>
+      <form (ngSubmit)="updateProduct()" novalidate>
+        <div class="mb-3">
+          <label for="productId" class="form-label">ID</label>
+          <input
+            id="productId"
+            type="text"
+            class="form-control form-control-lg w-100"
+            [(ngModel)]="currentProduct.idProduct"
+            name="id"
+            readonly
+          />
+        </div>
+        <div class="mb-3">
+          <label for="productName" class="form-label">NAME</label>
+          <input
+            id="productName"
+            type="text"
+            class="form-control form-control-lg w-100"
+            [(ngModel)]="currentProduct.nameProduct"
+            name="name"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="productPrice" class="form-label">PRICE</label>
+          <input
+            id="productPrice"
+            type="number"
+            class="form-control form-control-lg w-100"
+            [(ngModel)]="currentProduct.priceProduct"
+            name="price"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="dateCreation" class="form-label">DATE</label>
+          <input
+            id="dateCreation"
+            type="date"
+            class="form-control form-control-lg w-100"
+            [ngModel]="currentProduct.dateCreate | date : 'yyyy-MM-dd'"
+            (ngModelChange)="currentProduct.dateCreate=$event"
+            name="dateCreation"
+          />
+        </div>
+        <div class="mb-3">
+          <label>Category</label>
+          <select class="form-control form-control-lg" id="categoryId" name="categoryId" [(ngModel)]="newCategoryId">
+            <option *ngFor="let category of categories" [value]="category.idCategory">
+              {{ category.category }}
+            </option>
+          </select>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-success btn-lg">UPDATE</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

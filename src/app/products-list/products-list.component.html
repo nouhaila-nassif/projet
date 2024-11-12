@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <h5>Products List</h5>
+      <table class="table">
+        <thead>
+        <tr>
+          <!-- Masquer l'ID de produit de l'en-tête -->
+          <th style="display: none;">Product ID</th>
+          <th>Product Name</th>
+          <th>Product Price</th>
+          <th>Date Created</th>
+          <th>Category</th> <!-- Nouvelle colonne pour la catégorie -->
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of products">
+          <!-- Masquer l'ID de produit dans le corps du tableau -->
+          <td style="display: none;">{{ product.idProduct }}</td>
+          <td>{{ product.nameProduct }}</td>
+          <td>{{ product.priceProduct | currency:'USD':'symbol':'1.2-2' }}</td>
+          <td>{{ product.dateCreate | date:'shortDate' }}</td>
+          <td>{{ product.category?.category }}</td> <!-- Affichage de la catégorie -->
+          <td>
+            <a [routerLink]="['/edit-product', product.idProduct]" class="btn btn-warning">Edit</a>
+          </td>
+          <td>
+            <a class="btn btn-danger" (click)="deleteProduct(product.idProduct)">Delete</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

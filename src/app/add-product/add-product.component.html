@@ -1,0 +1,94 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <h2 class="text-center mb-4">Add Product</h2>
+      <form #productForm="ngForm" (ngSubmit)="addProduct()" novalidate>
+        <div class="mb-3">
+          <label for="productId" class="form-label">Product Id</label>
+          <input
+            id="productId"
+            type="text"
+            class="form-control"
+            [(ngModel)]="newProduct.idProduct"
+            name="productId"
+            required
+          />
+          <div *ngIf="productForm.controls['productId']?.invalid && productForm.controls['productId']?.touched" class="text-danger">
+            Product ID is required.
+          </div>
+
+        </div>
+        <div class="mb-3">
+          <label for="productName" class="form-label">Product Name</label>
+          <input
+            id="productName"
+            type="text"
+            class="form-control"
+            [(ngModel)]="newProduct.nameProduct"
+            name="productName"
+            required
+          />
+          <div *ngIf="productForm.controls['productName']?.invalid && productForm.controls['productName']?.touched" class="text-danger">
+            Product Name is required.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="productPrice" class="form-label">Product Price</label>
+          <input
+            id="productPrice"
+            type="number"
+            class="form-control"
+            [(ngModel)]="newProduct.priceProduct"
+            name="productPrice"
+            required
+          />
+          <div *ngIf="productForm.controls['productPrice']?.invalid && productForm.controls['productPrice']?.touched" class="text-danger">
+            Product Price is required.
+          </div>
+
+        </div>
+        <div class="mb-3">
+          <label for="dateCreation" class="form-label">Date Creation</label>
+          <input
+            id="dateCreation"
+            type="date"
+            class="form-control"
+            [(ngModel)]="newProduct.dateCreate"
+            name="dateCreation"
+            required
+          />
+          <div *ngIf="productForm.controls['dateCreation']?.invalid && productForm.controls['dateCreation']?.touched" class="text-danger">
+            Date Creation is required.
+          </div>
+
+        </div>
+        <div class="mb-3">
+          <label for="categoryId">Category</label>
+          <select
+            class="form-control form-control-lg"
+            id="categoryId"
+            name="categoryId"
+            [(ngModel)]="newCategoryId"
+            required>
+            <option value="" disabled selected>Select a category</option>
+            <option *ngFor="let category of categories" [value]="category.idCategory">
+              {{ category.category }}
+            </option>
+          </select>
+          <div *ngIf="!newCategoryId && productForm.controls['categoryId']?.touched" class="text-danger mt-2">
+            Please select a category.
+          </div>
+        </div>
+
+
+
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-success" [disabled]="productForm.invalid">
+            ADD
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

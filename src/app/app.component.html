@@ -1,52 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <title>Product Management</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body, html {
+      height: 100%;
+    }
+    .sidebar {
+      width: 220px;
+      background-color: #343a40;
+      color: white;
+      height: 100vh;
+      padding-top: 1rem;
+      position: fixed;
+    }
+    .sidebar .nav-link {
+      color: white;
+    }
+    .sidebar .dropdown-menu {
+      background-color: #343a40;
+    }
+    .main-content {
+      margin-left: 220px;
+      padding: 20px;
+    }
+    .home-button {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+    }
+  </style>
 </head>
 <body>
+
 <div class="d-flex">
   <!-- Sidebar -->
-  <nav class="bg-dark text-white" style="width: 200px; height: 100vh;">
+  <nav class="sidebar">
     <ul class="nav flex-column">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-white" href="#" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          PRODUCT
+        <a class="nav-link dropdown-toggle" href="#" id="dropdownProductMenu" data-bs-toggle="dropdown" aria-expanded="false">
+          Product
         </a>
-        <ul class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item text-white" routerLink="add-product">ADD</a></li>
+        <ul class="dropdown-menu" aria-labelledby="dropdownProductMenu">
+          <li><a class="dropdown-item" routerLink="add-product">Add Product</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item text-white" routerLink="productsList">LIST</a></li>
+          <li><a class="dropdown-item" routerLink="productsList">Product List</a></li>
         </ul>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-white" href="#" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+      <li class="nav-item dropdown mt-3">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdownUserMenu" data-bs-toggle="dropdown" aria-expanded="false">
           [USERNAME]
         </a>
-        <ul class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton2">
-          <li><a class="dropdown-item text-white" href="#">LOGIN</a></li>
+        <ul class="dropdown-menu" aria-labelledby="dropdownUserMenu">
+          <li><a class="dropdown-item" href="#">Login</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item text-white" href="#">LOGOUT</a></li>
+          <li><a class="dropdown-item" href="#">Logout</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item text-white" href="#">PROFIL</a></li>
+          <li><a class="dropdown-item" href="#">Profile</a></li>
         </ul>
       </li>
     </ul>
   </nav>
 
   <!-- Main content area -->
-  <div class="flex-fill">
+  <div class="main-content flex-fill">
     <div class="container">
       <router-outlet></router-outlet>
     </div>
   </div>
 
-  <!-- HOME button positioned at the top-right corner -->
-  <div class="position-absolute top-0 end-0 p-3">
+  <!-- Home button positioned at the top-right corner -->
+  <div class="home-button">
     <a class="btn btn-primary" href="#">
-      <i class="fas fa-home"></i> HOME
+      <i class="fas fa-home"></i> Home
     </a>
   </div>
 </div>
+
+<!-- Bootstrap and Font Awesome JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 </body>
 </html>

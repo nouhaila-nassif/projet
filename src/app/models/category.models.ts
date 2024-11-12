@@ -1,4 +1,4 @@
 export class CategoryModel{
-  categoryID? : number;
-  categoryName? : string;
+  idCategory? : number;
+  category? : string;
 }
